@@ -15,17 +15,15 @@
     God Bless,Never Bug
 """
 
-from flask import Flask
-from dotenv import load_dotenv, find_dotenv
-from const import Const
+from flask import jsonify
+from spotify import app
 
-load_dotenv(find_dotenv())
 
-app = Flask(__name__)
-debug_mode = Const.ENVIRONMENT == 'develop'
-
-from controllers.routes import *
-from controllers.errors import *
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000', debug=False)
+@app.errorhandler(500)
+def internal_server_error(error):
+    message = getattr(error, 'original_exception', 'unknown error')
+    result = jsonify({
+        'status': 500,
+        'message': str(message)
+    }), 500
+    return result
