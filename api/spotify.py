@@ -17,12 +17,14 @@
 
 from flask import Flask
 from dotenv import load_dotenv, find_dotenv
+from const import Const
 
 load_dotenv(find_dotenv())
 
 app = Flask(__name__)
+debug_mode = Const.ENVIRONMENT == 'develop'
 
 from controllers.routes import *
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000', debug=True)
+    app.run(host='0.0.0.0', port='5000', debug=debug_mode)

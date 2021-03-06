@@ -63,7 +63,7 @@ class SvgHandler:
         :param bar_count:
         :return:
         """
-        if is_current:
+        if is_current and data['item']:
             item = data['item']
         elif not is_current and Const.DISPLAY_RECENTLY:
             item = data['items'][0]['track']
