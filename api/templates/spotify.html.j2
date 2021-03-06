@@ -1,0 +1,101 @@
+<svg width="480" height="133" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <foreignObject width="480" height="133">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="container">
+            <style>
+                .main {
+                    display: flex;
+                }
+                .logo {
+                    margin-left: 230px;
+                    width: 30%;
+                    height: 30%;
+                }
+                .container {
+                    border-radius: 5px;
+                    padding: 10px 10px 10px 0px;
+                }
+                .art {
+                    width: 27%;
+                    float: left;
+                    margin-left: -5px;
+                }
+                .content {
+                    width: 71%;
+                }
+                .text {
+                    color: #9D9D9D;
+                    overflow:hidden;
+                    margin-top: 3px;
+                    font-size: 24px;
+                    font-weight: bold;
+                    text-align: center;
+                    white-space:nowrap;
+                    text-overflow:ellipsis;
+                }
+                .cover {
+                    position: absolute;
+                    top: 55%;
+                    left: 18%;
+                    width: 90px;
+                    height: 90px;
+                    border-radius: 50%;
+                    margin:-60px 0 0 -60px;
+                    -webkit-animation:spin 4s linear infinite;
+                    -moz-animation:spin 4s linear infinite;
+                    animation:spin 4s linear infinite;
+                }
+                @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+                @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+                @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+                #bars {
+                    width: 40px;
+                    height: 30px;
+                    bottom: 23px;
+                    position: absolute;
+                    margin: -20px 0 0 0px;
+                }
+                .bar {
+                    width: 3px;
+                    bottom: 1px;
+                    height: 3px;
+                    position: absolute;
+                    background: #1DB954cc;
+                    animation: sound 0ms -800ms linear infinite alternate;
+                }
+
+                div {
+                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+                }
+
+                @keyframes sound {
+                    0% {
+                        height: 3px;
+                        opacity: .35;
+                    }
+                    100% {
+                        height: 15px;
+                        opacity: 0.95;
+                    }
+                }
+                {{bar_css|safe}}
+            </style>
+
+            <div class="main">
+                <a class="art" href="{}" target="_blank">
+                    <center>
+                        <img src="data:image/png;base64, {{image}}" class="cover" />
+                    </center>
+                </a>
+
+                <div class="content">
+                    <div class="playing">
+                        <img src="data:image/png;base64, {{logo}}" class="logo"/>
+                    </div>
+                    <div class="text">{{display_text}}</div>
+                    <div id="bars">{{content_bar|safe}}</div>
+                </div>
+            </div>
+
+        </div>
+    </foreignObject>
+</svg>
