@@ -8,6 +8,7 @@ services:
     env_file: .env
     volumes:
       - ./api:/app:rw
+      - ./core:/app/core:rw
     ports:
       - '5000:5000'
     tty: true
