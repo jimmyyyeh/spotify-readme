@@ -20,12 +20,14 @@ from base64 import b64encode
 from random import randint
 from flask import render_template
 
-from const import Const
+from core.const import Const
+from core.config import Config
 
 
 class SvgHandler:
-    @classmethod
-    def bar_generate(cls, bar_count, is_playing):
+
+    @staticmethod
+    def bar_generate(bar_count, is_playing):
         """
         產生播放bar
         :param bar_count:
@@ -65,7 +67,7 @@ class SvgHandler:
         """
         if is_current and data['item']:
             item = data['item']
-        elif not is_current and Const.DISPLAY_RECENTLY:
+        elif not is_current and Config.DISPLAY_RECENTLY:
             item = data['items'][0]['track']
         else:
             return

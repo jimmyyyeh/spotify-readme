@@ -10,8 +10,7 @@ RUN mkdir -p ${WORKDIR}
 ENV TZ=Asia/Taipei
 
 WORKDIR ${WORKDIR}
-COPY ./api/requirements.txt .
-COPY main.py .
+COPY api .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 RUN rm requirements.txt

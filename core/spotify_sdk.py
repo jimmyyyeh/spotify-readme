@@ -17,19 +17,19 @@
 
 import requests
 from base64 import b64encode
-
-from const import Const
+from core.const import Const
+from core.config import Config
 
 
 class SpotifySdk:
     @staticmethod
     def refresh_token():
-        auth_str = f'{Const.SPOTIFY_CLIENT_ID}:{Const.SPOTIFY_SECRET_ID}'
+        auth_str = f'{Config.SPOTIFY_CLIENT_ID}:{Config.SPOTIFY_SECRET_ID}'
         auth_ascii = b64encode(auth_str.encode()).decode('ascii')
 
         data = {
             'grant_type': 'refresh_token',
-            'refresh_token': Const.SPOTIFY_REFRESH_TOKEN,
+            'refresh_token': Config.SPOTIFY_REFRESH_TOKEN,
         }
 
         headers = {'Authorization': f'Basic {auth_ascii}'}
