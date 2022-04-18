@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  python:
+    build:
+      context: .
+    image: spotify_readme
+    container_name: spotify_readme
+    env_file: .env
+    volumes:
+      - ./api:/app:rw
+      - ./core:/app/core:rw
+    ports:
+      - '5000:5000'
+    tty: true
